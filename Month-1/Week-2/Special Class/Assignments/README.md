@@ -1,0 +1,1 @@
+# QLITH MERN Internship Batch - JUN 2026
