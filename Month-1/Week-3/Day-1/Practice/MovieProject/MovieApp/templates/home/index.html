@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Movie List</h1>
+
+<div id="container"></div>
+
+<script>
+const showMovies = () => {
+    const movies = JSON.parse(localStorage.getItem("movies")) || [];
+    const container = document.getElementById("container");
+
+    container.innerHTML = ""; // Clear container first to prevent duplicates
+
+    movies.forEach((movie) => {
+        container.innerHTML += `
+        <div style="border: 1px solid #ccc; padding: 10px; margin: 10px; border-radius: 5px;">
+           <h3>${movie.name}</h3>
+           <h4>${movie.catagory}</h4>
+           <p>${movie.desc || ''}</p>
+           <img src="${movie.img}" alt="${movie.name}" style="max-width: 200px; display: block;"/>
+        </div>`;
+    });
+
+    console.log(movies);
+};
+
+showMovies();
+</script>
+</body>
+</html>

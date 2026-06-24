@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<h1>Add Movies</h1>
+
+<input type="text" id="name" placeholder="Enter movie name"/>
+<input type="text" id="catagory" placeholder="Enter movie catagory"/>
+<input type="text" id="img" placeholder="Enter image URL"/>
+<input type="text" id="desc" placeholder="Enter Description"/>
+
+<button onclick="handleSubmit()">Submit</button>
+
+<script>
+const handleSubmit = () => {
+    const name = document.getElementById("name").value;
+    const catagory = document.getElementById("catagory").value;
+    const img = document.getElementById("img").value;
+    const desc = document.getElementById("desc").value;
+
+    if(!name || !catagory || !img) {
+        alert("Please fill out the required fields!");
+        return;
+    }
+
+    const movie = {
+        name: name,
+        catagory: catagory,
+        img: img,
+        desc: desc
+    };
+
+    const movies = JSON.parse(localStorage.getItem("movies")) || [];
+    movies.push(movie);
+    localStorage.setItem("movies", JSON.stringify(movies));
+
+    alert("Movie added successfully!");
+    
+    // Clear inputs
+    document.getElementById("name").value = "";
+    document.getElementById("catagory").value = "";
+    document.getElementById("img").value = "";
+    document.getElementById("desc").value = "";
+};
+</script>
+</body>
+</html>
