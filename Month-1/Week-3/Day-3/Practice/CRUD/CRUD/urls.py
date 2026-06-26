@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from events.views import welcome,addEvent,getEvents,getEventByID,updateEvent,deleteEvent,getEventByPaginate
+from events.views import welcome,addEvent,getEvents,getEventByID,updateEvent,deleteEvent,getEventByPaginate,register,login,profile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +26,8 @@ urlpatterns = [
     path('api/event/<int:id>/', getEventByID, name="getEventByID"),
     path('api/edit/<int:id>/', updateEvent, name="updateEvent"),
     path('api/delete/<int:id>/', deleteEvent, name="deleteEvent"),
-    path('api/events/paginate', getEventByPaginate, name="getEventByPaginate")
+    path('api/events/paginate', getEventByPaginate, name="getEventByPaginate"),
+    path('api/register', register, name="register"),
+    path('api/login', login, name="login"),
+    path('api/profile', profile, name="profile")
 ]
